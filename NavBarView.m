@@ -1,5 +1,6 @@
 #import "NavBarView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ButtonActions.h"
 
 @implementation NavBarView {
     UIVisualEffectView *_blur;
@@ -14,9 +15,9 @@
         _blur.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _blur.layer.cornerRadius = 16.0;
         _blur.layer.masksToBounds = YES;
-        _blur.alpha = 0.9;
+        _blur.alpha = 0;
         [self addSubview:_blur];
-
+        
         _back    = [self pill:@"◁"];
         _home    = [self pill:@"●"];
         _recents = [self pill:@"□"];
@@ -34,7 +35,7 @@
 - (UIButton *)pill:(NSString *)title {
     UIButton *b = [UIButton buttonWithType:UIButtonTypeSystem];
     b.backgroundColor = [[UIColor labelColor] colorWithAlphaComponent:0.18];
-    b.layer.cornerRadius = 18.0;
+    b.layer.cornerRadius = 12.5;
     b.titleLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];
     [b setTitle:title forState:UIControlStateNormal];
     [b setTitleColor:UIColor.labelColor forState:UIControlStateNormal];
@@ -54,8 +55,8 @@
     _recents.frame = CGRectMake(spacing*3 + btnW*2, y, btnW, btnH);
 }
 
-- (void)tBack    { if (self.onBack)    self.onBack();    }
-- (void)tHome    { if (self.onHome)    self.onHome();    }
-- (void)tRecents { if (self.onRecents) self.onRecents(); }
+- (void)tBack    { [ButtonActions performBackAction]; }
+- (void)tHome    { [ButtonActions performHomeAction]; }
+- (void)tRecents { [ButtonActions performRecentsAction]; }
 
 @end

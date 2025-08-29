@@ -8,12 +8,12 @@ static NavBarView *persistentNavBar = nil;
     %orig;
 
     if (!persistentNavBar) {
-        CGFloat navHeight = 60;
-        CGFloat padding = 20;
+        CGFloat navHeight = 35;
+        CGFloat padding = 10;
         CGRect frame = CGRectMake(
             20,
             CGRectGetHeight(self.bounds) - navHeight - padding,
-            CGRectGetWidth(self.bounds) - 40,
+            CGRectGetWidth(self.bounds) - 25,
             navHeight
         );
 
@@ -28,11 +28,10 @@ static NavBarView *persistentNavBar = nil;
     }
 
     CGFloat navHeight = CGRectGetHeight(persistentNavBar.bounds);
-    CGFloat padding = 20;
     persistentNavBar.frame = CGRectMake(
-        20,
-        CGRectGetHeight(self.bounds) - navHeight - padding,
-        CGRectGetWidth(self.bounds) - 40,
+        0,
+        CGRectGetHeight(self.bounds) - navHeight,
+        CGRectGetWidth(self.bounds) - 0,
         navHeight
     );
 }

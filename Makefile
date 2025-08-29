@@ -8,7 +8,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = AndroBar15
 
-AndroBar15_FILES = Tweak.x NavBarView.m
+AndroBar15_FILES = Tweak.x NavBarView.m ButtonActions.m
 AndroBar15_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
