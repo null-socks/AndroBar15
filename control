@@ -1,0 +1,9 @@
+Package: socks.null.androbar15
+Name: AndroBar15
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Description: Android-style gesture (?)  bar for iOS
+Maintainer: null
+Author: null
+Depends: mobilesubstrate, firmware (>= 15.0)
+Section: tweaks
