@@ -1,4 +1,4 @@
-#import <UIKit/UIKit.h>      // for UIWindow, UIView
+#import <UIKit/UIKit.h>
 #import "NavBarView.h"
 
 static NavBarView *persistentNavBar = nil;

@@ -10,5 +10,6 @@ TWEAK_NAME = AndroBar15
 
 AndroBar15_FILES = Tweak.x NavBarView.m ButtonActions.m
 AndroBar15_CFLAGS = -fobjc-arc
+AndroBar15_FRAMEWORKS = SpringBoardServices
 
 include $(THEOS_MAKE_PATH)/tweak.mk
