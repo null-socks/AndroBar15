@@ -56,7 +56,26 @@
 }
 
 - (void)tBack    { [ButtonActions performBackAction]; }
-- (void)tHome    { [ButtonActions performHomeAction]; }
 - (void)tRecents { [ButtonActions performRecentsAction]; }
+
+static NSDate *lastHomePress = nil;
+static NSTimeInterval doubleTapThreshold = 0.4;
+
+- (void)tHome {
+    NSDate *now = [NSDate date];
+
+    if (lastHomePress && [now timeIntervalSinceDate:lastHomePress] < doubleTapThreshold) {
+        [ButtonActions performRecentsAction];
+        lastHomePress = nil;
+    } else {
+        lastHomePress = now;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(doubleTapThreshold * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (lastHomePress) { // still a single tap
+                [ButtonActions performHomeAction];
+                lastHomePress = nil;
+            }
+        });
+    }
+}
 
 @end

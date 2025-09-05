@@ -5,5 +5,5 @@ Architecture: iphoneos-arm64
 Description: Android-style gesture (?)  bar for iOS
 Maintainer: null
 Author: null
-Depends: mobilesubstrate, firmware (>= 15.0)
+Depends: preferenceloader, mobilesubstrate, firmware (>= 15.0)
 Section: tweaks

@@ -3,13 +3,14 @@ TARGET = iphone:clang:latest:15.0
 INSTALL_TARGET_PROCESSES = SpringBoard
 THEOS_PACKAGE_SCHEME = rootless
 
-
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = AndroBar15
 
 AndroBar15_FILES = Tweak.x NavBarView.m ButtonActions.m
 AndroBar15_CFLAGS = -fobjc-arc
-AndroBar15_FRAMEWORKS = SpringBoardServices
-
+AndroBar15_FRAMEWORKS = UIKit SpringBoardServices
 include $(THEOS_MAKE_PATH)/tweak.mk
+
+SUBPROJECTS += AndroBar15Prefs
+include $(THEOS_MAKE_PATH)/aggregate.mk

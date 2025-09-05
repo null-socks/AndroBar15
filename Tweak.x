@@ -1,7 +1,12 @@
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "NavBarView.h"
 
+NSUserDefaults *prefs;
+
 static NavBarView *persistentNavBar = nil;
+
+%group makeDaThingWork
 
 %hook UIWindow
 - (void)layoutSubviews {
@@ -36,3 +41,14 @@ static NavBarView *persistentNavBar = nil;
     );
 }
 %end
+
+%end
+
+%ctor {
+    prefs = [[NSUserDefaults alloc] initWithSuiteName:@"socks.null.androbar15prefs"];
+    if (![prefs boolForKey:@"enabled"]) {
+        return;
+    } else {
+    %init(makeDaThingWork)
+    }
+}
