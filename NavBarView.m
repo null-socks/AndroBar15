@@ -2,6 +2,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ButtonActions.h"
 
+extern NSUserDefaults *prefs;
+
 @implementation NavBarView {
     UIVisualEffectView *_blur;
     UIButton *_back, *_home, *_recents;
@@ -59,22 +61,28 @@
 - (void)tRecents { [ButtonActions performRecentsAction]; }
 
 static NSDate *lastHomePress = nil;
-static NSTimeInterval doubleTapThreshold = 0.4;
+static double doubleTapThreshold = 0.4;
 
 - (void)tHome {
+    NSUserDefaults *prefs = [[NSUserDefaults alloc] initWithSuiteName:@"socks.null.androbar15prefs"];
     NSDate *now = [NSDate date];
+    doubleTapThreshold = [prefs integerForKey:@"dtappinterval"] / 10.0;
 
-    if (lastHomePress && [now timeIntervalSinceDate:lastHomePress] < doubleTapThreshold) {
-        [ButtonActions performRecentsAction];
-        lastHomePress = nil;
+    if ([prefs boolForKey:@"doubletappswitcher"]) {
+        if (lastHomePress && [now timeIntervalSinceDate:lastHomePress] < doubleTapThreshold) {
+            [ButtonActions performRecentsAction];
+            lastHomePress = nil;
+        } else {
+            lastHomePress = now;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(doubleTapThreshold * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (lastHomePress) {
+                    [ButtonActions performHomeAction];
+                    lastHomePress = nil;
+                }
+            });
+        }
     } else {
-        lastHomePress = now;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(doubleTapThreshold * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            if (lastHomePress) { // still a single tap
-                [ButtonActions performHomeAction];
-                lastHomePress = nil;
-            }
-        });
+        [ButtonActions performHomeAction];
     }
 }
 
