@@ -54,6 +54,34 @@
 		    <key>cell</key>
 		    <string>PSGroupCell</string>
 			<key>label</key>
+			<string>Back Action</string>
+		</dict>
+		<dict>
+		    <key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>key</key>
+			<string>backMode</string>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaults</key>
+			<string>socks.null.androbar15prefs</string>
+			<key>label</key>
+			<string>Test</string>
+			<key>validTitles</key>
+			<array>
+				<string>Gesture</string>
+				<string>Back Tap</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+			</array>
+		</dict>
+		<dict>
+		    <key>cell</key>
+		    <string>PSGroupCell</string>
+			<key>label</key>
 			<string>Home Button Settings</string>
 		    <key>footerText</key>
 		    <string>Allowed time between taps (for opening app switcher)</string>
@@ -108,6 +136,6 @@
 		</dict>
 	</array>
 	<key>title</key>
-	<string>AndroBar15Prefs</string>
+	<string>AndroBar15</string>
 </dict>
 </plist>

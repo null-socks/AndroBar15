@@ -17,7 +17,7 @@ static NavBarView *persistentNavBar = nil;
         if ([prefs integerForKey:@"navbarStyle"] == 0) {
             navHeight = 32;
         } else {
-            navHeight = 40;
+            navHeight = 37;
         }
         CGFloat padding = 10;
         CGRect frame = CGRectMake(

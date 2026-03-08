@@ -5,7 +5,7 @@
 extern NSUserDefaults *prefs;
 
 @implementation NavBarView {
-    UIView *_blur; // can be UIBlurEffectView or plain UIView
+    UIView *_blur;
     UIButton *_back, *_home, *_recents;
     NSInteger _styleMode;
 }
@@ -27,7 +27,7 @@ extern NSUserDefaults *prefs;
             _recents = [self pill:@"■" style:_styleMode];
         } else { // meka mode
             _blur = [[UIView alloc] init];
-            _blur.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+            _blur.backgroundColor = [UIColor colorWithWhite:0.10 alpha:1.0];
             _blur.layer.cornerRadius = 0;
             _blur.layer.masksToBounds = NO;
             _back    = [self pill:@"◁" style:_styleMode];

@@ -11,5 +11,6 @@ AndroBar15Prefs_FRAMEWORKS = UIKit
 AndroBar15Prefs_PRIVATE_FRAMEWORKS = Preferences
 AndroBar15Prefs_INSTALL_PATH = /Library/PreferenceBundles
 AndroBar15Prefs_CFLAGS = -fobjc-arc
+AndroBar15Prefs_RESOURCE_DIRS = Resources
 
 include $(THEOS_MAKE_PATH)/bundle.mk
